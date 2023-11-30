@@ -29,6 +29,9 @@ class Produto(models.Model):
 
     def __str__(self):
         return self.nome
+    
+    def get_avaliacao(self):
+        return range(self.avaliacao)
       
 class Cliente(models.Model):
     ESTADO_CIVIL = [

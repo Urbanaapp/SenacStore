@@ -28,8 +28,10 @@
                                 <li><a class="dropdown-item" href="{% url 'produto_lista'%}">Todos Produtos</a></li>
                                 <li><hr class="dropdown-divider" /></li>
                                 {% for depto in departamentos %}
-                                    <li><a class="dropdown-item" href="#!">{{ depto }}</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'produto_lista_por_id' id=depto.id %}">{{ depto }}</a></li>
                                 {% endfor %}
+                                    {% comment %} <li><a class="dropdown-item" href="{% url 'produto_lista_por_id' id=depto.id  %} ">{{ depto }}</a></li> {% endcomment %}
+                            
                             </ul>
                         </li>
                         <li class="nav-item"><a class="nav-link" href="#!">Cadastro</a></li>
