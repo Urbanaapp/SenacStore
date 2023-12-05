@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from StoreApp.models import Departamento, Produto
+from StoreApp.forms import ContatoForm
 # Create your views
 def index(request):    
     produtos_em_destaque = Produto.objects.filter(destaque = True)    
@@ -38,8 +39,23 @@ def produto_lista_por_id(request,id):
 
 def produto_detalhe(request, id):
     produto = Produto.objects.get(id = id)
-
+    produtos_relacionados = Produto.objects.filter(departamento_id = 
+                                                   produto.departamento.id).exclude(id = id)[:4]
+    
     context = {
-        'produto': produto
+        'produto': produto,
+        'produtos_relacionados' : produtos_relacionados
     }
     return render(request,'produto_detalhes.html', context)
+
+def institucional(request):           
+    return render(request,'institucional.html')
+
+def contato(request):           
+    # Criando uma instancia do form de Contato
+    formulario = ContatoForm()
+
+    context = {
+        'form_contato' : formulario
+    }
+    return render(request,'contato.html', context)

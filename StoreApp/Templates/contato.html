@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block Titulo%} Fale Conosco - Senac Store{% endblock %}
+
+{% block Conteudo %}
+   <!-- Header-->
+   <header class="bg-light py-1">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-dark">
+            <h1 class="display-4 fw-bolder">Contato</h1>
+        </div>
+    </div>
+</header>
+<!-- Section-->
+<section class="py-5">
+    <div class="container px-4 px-lg-5 mt-5">
+        
+        <form action ='' method = 'post'>
+        {{ form_contato.as_p }}
+    </div>
+</section>
+<!-- Footer-->
+{%endblock%}
