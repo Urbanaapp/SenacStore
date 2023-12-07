@@ -1,6 +1,8 @@
 from django.shortcuts import render
+from django.core.mail import send_mail
 from StoreApp.models import Departamento, Produto
-from StoreApp.forms import ContatoForm
+from StoreApp.forms import ContatoForm, ClienteForm
+
 # Create your views
 def index(request):    
     produtos_em_destaque = Produto.objects.filter(destaque = True)    
@@ -51,11 +53,41 @@ def produto_detalhe(request, id):
 def institucional(request):           
     return render(request,'institucional.html')
 
-def contato(request):           
+def contato(request):     
+    mensagem = ''
+    # Se o form foi enviado (botao enviar)
+    if request.method == 'POST':
+        nome = request.POST['nome']
+        telefone = request.POST['telefone']
+        assunto = request.POST['assunto']
+        mensagem = request.POST['mensagem']
+        remetente = request.POST['email']
+        destinatario = ['matheus10.c48@gmail.com']
+        corpo = f'Nome: {nome} \nTelefone:{telefone} \nMensagem: {mensagem}'
+
+        try:               
+            # fazer o envio do e-mail
+            send_mail (assunto, corpo, remetente, destinatario )
+            mensagem = 'Envido com sucesso :)'
+        except:
+            mensagem = 'Erro ao enviar a Mesagem :('
     # Criando uma instancia do form de Contato
     formulario = ContatoForm()
 
     context = {
-        'form_contato' : formulario
+        'form_contato' : formulario, 
+        'mensagem' : mensagem   
     }
     return render(request,'contato.html', context)
+
+def cadastro(request):
+    mensagem = ''
+    # instanciar o form cliente
+    formulario = ClienteForm()
+    
+    context = {
+        'form_cadastro': formulario,
+        'mensagem': mensagem
+    }
+    return render(request, 'cadastro.html', context)
+

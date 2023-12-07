@@ -3,14 +3,14 @@
 {% load crispy_forms_filters %}
 {% load crispy_forms_tags %}
 
-{% block Titulo%} Fale Conosco - Senac Store{% endblock %}
+{% block Titulo%} Cadastro - Senac Store{% endblock %}
 
 {% block Conteudo %}
    <!-- Header-->
    <header class="bg-light py-1">
     <div class="container px-4 px-lg-5 my-5">
         <div class="text-center text-dark">
-            <h1 class="display-4 fw-bolder">Contato</h1>
+            <h1 class="display-4 fw-bolder">Cadastro</h1>
         </div>
     </div>
 </header>
@@ -27,7 +27,7 @@
         {% csrf_token %}
         <div class='col-md-6 offset-md-3'>
             <table>
-            {{ form_contato|crispy }}
+            {{ form_cadastro|crispy }}
             </table>    
             <input type='submit' value='Enviar' class='btn btn-dark'/>
     </div>
