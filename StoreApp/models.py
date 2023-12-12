@@ -41,7 +41,7 @@ class Cliente(models.Model):
         ('VIU','Viúvo')
     ]
     nome = models.CharField(max_length=50)
-    cpf = models.CharField(max_length=14)
+    cpf = models.CharField(max_length=14, unique=True)
     data_nascimento = models.DateField(verbose_name="Data de Nascimento")
     email = models.EmailField(max_length=120)
     cep = models.CharField(max_length=9)

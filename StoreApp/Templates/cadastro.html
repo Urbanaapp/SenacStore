@@ -18,12 +18,12 @@
 <section class="py-5">
     <div class="container px-4 px-lg-5 mt-5">
         {% if mensagem %}
-            <div class = "alert alert-{% if 'Erro' in mensagem %} danger{% else %}success{% endif %}">
+            <div class = "text-right alert alert-{% if 'erros' in mensagem %}danger{% else %}success{% endif %}">
                 {{ mensagem }}
-            </div>    
+        </div>    
         {% endif %}    
 
-        <form action ='' method = 'post'>
+        <form action ="{% url 'cadastro' %}" method = 'POST'>
         {% csrf_token %}
         <div class='col-md-6 offset-md-3'>
             <table>
@@ -33,4 +33,4 @@
     </div>
 </section>
 <!-- Footer-->
-{%endblock%}
+{% endblock %}
