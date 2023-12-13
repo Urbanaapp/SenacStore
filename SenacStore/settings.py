@@ -50,7 +50,8 @@ INSTALLED_APPS = [
     'crispy_forms',
     'crispy_bootstrap5',
     'cloudinary_storage',
-	'cloudinary'
+	'cloudinary',
+    'whitenoise.runserver_nostatic'
 
 ]
 CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
@@ -64,6 +65,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 ROOT_URLCONF = 'SenacStore.urls'
